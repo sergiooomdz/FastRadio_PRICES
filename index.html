@@ -19,32 +19,37 @@
 </head>
 <body>
 
-  <header>
-    <h1>Elije Tu Plan Ideal</h1>
-    <p>Descubre nuestras opciones de suscripción diseñadas para adaptarse a tus necesidades.</p>
-  </header>
+  <!-- Hero Section -->
+  <section class="hero" data-aos="fade-in">
+    <div class="hero-content">
+      <h2>FAST RADIO | PLANES</h2>
+      <p>Planes diseñados para emprendedores, equipos pequeños y empresas escalables.</p>
+      <button id="showPlansBtn" class="cta-button" data-aos="zoom-in" data-aos-delay="300">VER PLANES</button>
+    </div>
+  </section>
 
-  <section class="pricing-section" aria-label="Planes de suscripción">
+  <!-- Pricing Section - Oculta por defecto -->
+  <section class="pricing-section" aria-label="Planes de suscripción" id="plansSection" style="display: none;">
     
-    <!-- Toggle Mensual / Anual -->
-    <div class="billing-toggle">
+    <!-- Toggle Mensual / Trimestral -->
+    <div class="billing-toggle" data-aos="fade-up" data-aos-delay="400">
       <span>Mensual</span>
       <label class="toggle-switch">
         <input type="checkbox" id="toggleBilling" />
         <span class="slider"></span>
       </label>
-      <span>Anual (-20%)</span>
+      <span>Trimestral (-12%)</span>
     </div>
 
     <!-- Contenedor de Planes -->
-    <div class="pricing-container" id="plansContainer"></div>
+    <div class="pricing-container" id="plansContainer" data-aos="fade-up" data-aos-delay="500"></div>
 
   </section>
 
-   <!-- Footer fijo -->
-    <footer>
-        <p>© 2025 FAST-RADIO GTAHUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
-    </footer>
+  <!-- Footer fijo -->
+  <footer>
+    <p>© 2025 FAST RADIO GTA HUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
+  </footer>
 
   <!-- AOS Init Script -->
   <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
@@ -55,7 +60,7 @@
       const plansData = [
         {
           name: "PLAN SOLO",
-          priceMonthly: 50000,
+          priceMonthly: 49999,
           allowAnnual: true,
           highlighted: false,
           features: [
@@ -69,59 +74,66 @@
         },
         {
           name: "PLAN DUO",
-          priceMonthly: 95000,
+          priceMonthly: 94999,
           allowAnnual: true,
           highlighted: true,
           features: [
             { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
             { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Disponible para dos personas" },
+            { included: true, text: "Disponible para dos personas máximo" },
             { included: true, text: "Acceso a la herramienta de tu LEO" },
-            { included: true, text: "10% de descuento al adquirir más de dos meses" },
             { included: false, text: "No es posible compartirlo con más de dos personas" }
           ],
           link: "https://discord.gg/TxBnB4kPy2 "
         },
         {
           name: "PLAN SQUAD",
-          priceMonthly: 250000,
-          allowAnnual: false,
+          priceMonthly: 249999,
+          allowAnnual: true,
           features: [
             { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
             { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Disponible para cinco personas" },
+            { included: true, text: "Disponible para cinco personas máximo" },
+            { included: true, text: "Acceso a la herramienta de tu LEO" },
             { included: false, text: "No es posible compartirlo con más de cinco personas" }
           ],
           link: "https://discord.gg/TxBnB4kPy2 "
         },
         {
-          name: "DE POR VIDA",
-          priceMonthly: 650000,
+          name: "LIFETIME",
+          priceMonthly: 660000,
           allowAnnual: false,
           features: [
-            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+            { included: true, text: "¿LIFETIME? Sí, asi es, de por vida, para siempre, no pagaras más", tooltip: "Plan permanente, para siempre." },
+            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras para siempre." },
             { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
             { included: true, text: "Acceso permanente a todas nuestras herramientas" },
-            { included: true, text: "Disponible para dos personas" },
+            { included: true, text: "Disponible para dos personas máximo" },
             { included: false, text: "No es posible compartirlo con más de dos personas" }
           ]
         }
       ];
 
-      function formatPrice(price, annual = false) {
-        if (!annual || !this.allowAnnual) return `$${price.toLocaleString()} COP`;
-        return `$${(price * 10).toLocaleString()} COP`;
+      function formatPrice(price, isQuarterly = false) {
+        if (!isQuarterly || !this.allowAnnual) return `$${price.toLocaleString()} $`;
+        // Precio trimestral con 12% de descuento
+        return `$${(price * 3 * 0.88).toLocaleString()} $`;
       }
 
-      function createPlanElement(plan, annual = false) {
+      function createPlanElement(plan, isQuarterly = false) {
         const div = document.createElement("div");
         div.className = `pricing-plan ${plan.highlighted ? "highlighted" : ""}`;
         div.setAttribute('data-aos', 'fade-up');
+        div.setAttribute('data-aos-delay', Math.random() * 300);
         div.innerHTML = `
-          ${plan.highlighted ? '<div class="highlight-badge">Más popular</div>' : ''}
+          ${plan.highlighted ? '<div class="highlight-badge">MÁS PEDIDO</div>' : ''}
           <div class="plan-name">${plan.name}</div>
-          <div class="plan-price">${formatPrice.call(plan, plan.priceMonthly, annual && plan.allowAnnual)}</div>
-          <div class="plan-period">${plan.allowAnnual ? (annual ? "/año (ahorra 20%)" : "/mes") : "/único pago"}</div>
+          <div class="plan-price">${formatPrice.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual)}</div>
+          <div class="plan-period">
+            ${plan.allowAnnual 
+              ? (isQuarterly ? "/trimestral (ahorra 12%)" : "/mes") 
+              : "/único pago"}
+          </div>
           <ul class="features-list">
             ${plan.features.map(feat => `
               <li class="feature-item ${feat.included ? '' : 'not-included'} ${!feat.text.trim() ? 'feature-empty' : ''}"
@@ -130,25 +142,33 @@
                 ${feat.text}
               </li>`).join('')}
           </ul>
-          <a href="${plan.link}" class="plan-button" target="_blank" rel="noopener noreferrer" aria-label="Adquirir plan ${plan.name} por ${formatPrice.call(plan, plan.priceMonthly, annual)}">
+          <a href="${plan.link}" class="plan-button" target="_blank" rel="noopener noreferrer" aria-label="Adquirir plan ${plan.name} por ${formatPrice.call(plan, plan.priceMonthly, isQuarterly)}">
             Adquirir
           </a>
         `;
         return div;
       }
 
-      function renderPlans(annual = false) {
+      function renderPlans(isQuarterly = false) {
         const container = document.getElementById("plansContainer");
         container.innerHTML = "";
         plansData.forEach(plan => {
-          container.appendChild(createPlanElement(plan, annual && plan.allowAnnual));
+          container.appendChild(createPlanElement(plan, isQuarterly && plan.allowAnnual));
         });
       }
 
-      // Render inicial
-      renderPlans();
+      // Manejar click en botón
+      document.getElementById("showPlansBtn").addEventListener("click", function () {
+        const plansSection = document.getElementById("plansSection");
+        plansSection.style.display = "block";
+        setTimeout(() => {
+          plansSection.classList.add("aos-animate");
+        }, 100);
+        renderPlans(); // Renderizar solo cuando se hace click
+        AOS.refresh();
+      });
 
-      // Toggle evento
+      // Toggle evento - Ahora es Trimestral
       document.getElementById("toggleBilling").addEventListener("change", function () {
         renderPlans(this.checked);
       });
@@ -156,7 +176,8 @@
       // Inicializar animaciones
       AOS.init({
         duration: 600,
-        once: true
+        once: true,
+        offset: 100
       });
     });
   </script>

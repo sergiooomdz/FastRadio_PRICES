@@ -1,5 +1,6 @@
 :root {
   --primary: #2196F3;
+  --red: #ff4800;
   --bg: #0f0f0f;
   --card-bg: #1a1a1a;
   --text: #ffffff;
@@ -22,24 +23,45 @@ body {
   line-height: 1.6;
 }
 
-header {
-  padding: 3rem 1.5rem;
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, #0f0f0f, #1c1c1c);
+  padding: 5rem 2rem;
   text-align: center;
 }
 
-header h1 {
+.hero h2 {
   font-size: 2.5rem;
-  margin-bottom: 1rem;
   font-weight: 700;
+  margin-bottom: 1rem;
 }
 
-header p {
-  max-width: 600px;
-  margin: 0 auto;
-  opacity: 0.7;
+.hero p {
   font-size: 1.1rem;
+  opacity: 0.7;
+  max-width: 600px;
+  margin: 0 auto 2rem;
 }
 
+.cta-button {
+  display: inline-block;
+  padding: 0.8rem 2rem;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #1976d2;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(33, 150, 243, 0.3);
+}
+
+/* Toggle */
 .billing-toggle {
   display: flex;
   justify-content: center;
@@ -78,6 +100,7 @@ header p {
   background: var(--primary);
 }
 
+/* Planes */
 .pricing-container {
   max-width: 1100px;
   margin: 0 auto;
@@ -97,24 +120,40 @@ header p {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
   position: relative;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.pricing-plan:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .highlight-badge {
   position: absolute;
   top: -10px;
   right: -10px;
-  background: var(--primary);
+  background: var(--red);
   color: white;
   padding: 4px 10px;
   font-size: 0.8rem;
   border-radius: 5px;
   font-weight: bold;
   z-index: 2;
+  animation: pulse 2s infinite;
 }
 
-.pricing-plan:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 .plan-name {
@@ -181,16 +220,11 @@ header p {
   transform: scale(1.03);
 }
 
+/* Footer */
 footer {
   padding: 2rem 1.5rem;
   text-align: center;
   font-size: 0.9rem;
   color: #666;
   background-color: #111;
-}
-
-@media (max-width: 768px) {
-  .plan-price {
-    font-size: 2rem;
-  }
 }
