@@ -1,258 +1,260 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FAST RADIO | PLANES</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FAST RADIO | PLANES</title>
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
 
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
 
-  <!-- Estilos Externos -->
-  <link rel="stylesheet" href="style.css">
+    <!-- Estilos Externos -->
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <!-- Hero Section -->
-  <section class="hero" data-aos="fade-in">
-    <div class="hero-content">
-      <h2>FAST RADIO | PLANES</h2>
-      <p>Planes diseñados accesibles para cualquier persona o un grupo de personas.</p>
-      <button id="showPlansBtn" class="cta-button" data-aos="zoom-in" data-aos-delay="300">VER PLANES</button>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section class="hero" data-aos="fade-in">
+        <div class="hero-content">
+            <h2>FAST RADIO | PLANES</h2>
+            <p>Planes diseñados accesibles para cualquier persona o un grupo de personas.</p>
+            <button id="showPlansBtn" class="cta-button" data-aos="zoom-in" data-aos-delay="300">VER PLANES</button>
+        </div>
+    </section>
 
-  <!-- Pricing Section - Oculta por defecto -->
-  <section class="pricing-section" aria-label="Planes de suscripción" id="plansSection" style="display: none;">
+    <!-- Pricing Section - Oculta por defecto -->
+    <section class="pricing-section" aria-label="Planes de suscripción" id="plansSection" style="display: none;">
+
+        <!-- Toggle Mensual / Trimestral -->
+        <div class="billing-toggle" data-aos="fade-up" data-aos-delay="400">
+            <span>Mensual</span>
+            <label class="toggle-switch">
+                <input type="checkbox" id="toggleBilling" />
+                <span class="slider"></span>
+            </label>
+            <span>Trimestral (-12%)</span>
+        </div>
+
+        <!-- Contenedor de Planes -->
+        <div class="pricing-container" id="plansContainer" data-aos="fade-up" data-aos-delay="500"></div>
+
+    </section>
+    <!-- Información Importante -->
+    <section class="important-info" data-aos="fade-up" data-aos-delay="600">
+        <div class="info-box">
+            <div class="icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M12 6v6l4 2"></path>
+                </svg>
+            </div>
+            <div class="info-text">
+                <strong>IMPORTANTE:</strong> Los precios mostrados están en dinero IC del servidor GTAHUB.GG RP ORION</em>. Asegúrate de tener fondos suficientes dentro del juego para realizar la compra.
+            </div>
+        </div>
+    </section>
+
+    <!-- Términos y Condiciones -->
+    <section class="terms-section" data-aos="fade-up" data-aos-delay="700">
+        <div class="terms-box">
+            <h3><i class="fas fa-balance-scale"></i> Términos y Condiciones (Ultimo cambio 04/07/2025)</h3>
+
+            <div class="term-category">
+                <h4><i class="fas fa-money-check-alt"></i> Pagos y Devoluciones:</h4>
+                <ul>
+                    <li><i class="fas fa-times-circle term-no"></i> No se aceptan devoluciones bajo ningún concepto.</li>
+                    <li><i class="fas fa-info-circle term-info"></i> Solo se devolverá el monto proporcional no usado si nuestras herramientas dejan de estar disponibles públicamente.</li>
+                    <li><i class="fas fa-coins"></i> Todos los precios mostrados están en dinero IC del servidor GTAHUB.GG ORION.</li>
+                </ul>
+            </div>
+
+            <div class="term-category">
+                <h4><i class="fas fa-user-shield"></i> Uso del Servicio:</h4>
+                <ul>
+                    <li><i class="fas fa-users"></i> Los planes compartidos (como DUO o SQUAD) son para uso exclusivo por el grupo definido. Compartirlos fuera de ese límite es motivo de suspensión inmediata.</li>
+                    <li><i class="fas fa-lock"></i> El acceso publico para cualquier usuarios registrados dentro del servidor GTAHUB.GG ORION y que pague la cantidad establecida.</li>
+                    <li><i class="fas fa-link"></i> Este servicio no es transferible ni aplicable en otros servidores o plataformas.</li>
+                </ul>
+            </div>
+
+            <div class="term-category">
+                <h4><i class="fas fa-sync-alt"></i> Renovación y Modificaciones:</h4>
+                <ul>
+                    <li><i class="fas fa-history"></i> Las suscripciones NO se renuevan automáticamente, deberás abrir un ticket en nuestro Discord.</li>
+                    <li><i class="fas fa-edit"></i> Nos reservamos el derecho de modificar precios, características o disponibilidad sin previo aviso.</li>
+                    <li><i class="fas fa-exclamation-triangle"></i> Cualquier intento de fraude, abuso o violación de estos términos resultará en la cancelación inmediata del plan sin compensaciones.</li>
+                </ul>
+            </div>
+
+            <div class="term-category">
+                <h4><i class="fas fa-question-circle"></i> Soporte y Contacto:</h4>
+                <ul>
+                    <p><i class="fas fa-headset"></i> El soporte técnico y consultas se brindan únicamente vía Discord.</p>
+                    <p><i class="fas fa-headset"></i> El servicio de Fast Radio, NO es oficial de GTAHUB.GG, es una herramienta independiente.</p>
+                    <p><i class="fas fa-server"></i> Este servicio está gestionado por FAST RADIO - GTAHUB.GG y está ligado únicamente al servidor GTAHUB.GG ORION.</p>
+                </ul>
+            </div>
+
+            <div class="term-disclaimer">
+                <p><strong>Nota:</strong> Al adquirir cualquiera de nuestros planes, aceptas automáticamente estos términos y condiciones.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer fijo -->
+    <footer>
+        <p>© 2025 FAST RADIO GTAHUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
+    </footer>
+
+    <!-- AOS Init Script -->
+    <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+
+    <!-- Script Interno -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          const plansData = [
+            {
+              name: "PLAN SOLO",
+              priceMonthly: 50000,
+              allowAnnual: true,
+              highlighted: false,
+              features: [
+                { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+                { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+                { included: true, text: "Solo disponible para una persona" },
+                { included: true, text: "Acceso a la herramienta de tu LEO" },
+                { included: false, text: "No es posible compartirlo con más personas" }
+              ],
+              link: "https://discord.gg/TxBnB4kPy2 "
+            },
+            {
+              name: "PLAN DUO",
+              priceMonthly: 95000,
+              allowAnnual: true,
+              highlighted: true,
+              features: [
+                { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+                { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+                { included: true, text: "Disponible para dos personas máximo" },
+                { included: true, text: "Acceso a la herramienta de tu LEO" },
+                { included: false, text: "No es posible compartirlo con más de dos personas" }
+              ],
+              link: "https://discord.gg/TxBnB4kPy2 "
+            },
+            {
+              name: "PLAN SQUAD",
+              priceMonthly: 250000,
+              allowAnnual: true,
+              features: [
+                { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+                { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+                { included: true, text: "Disponible para cinco personas máximo" },
+                { included: true, text: "Acceso a la herramienta de tu LEO" },
+                { included: false, text: "No es posible compartirlo con más de cinco personas" }
+              ],
+              link: "https://discord.gg/TxBnB4kPy2 "
+            },
+            {
+              name: "LIFETIME",
+              priceMonthly: 660000,
+              allowAnnual: false,
+              features: [
+                { included: true, text: "¿LIFETIME? Sí, así es, de por vida, para siempre, no pagarás más", tooltip: "Plan permanente, para siempre." },
+                { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+                { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras para siempre." },
+                { included: true, text: "Acceso permanente a todas nuestras herramientas" },
+                { included: true, text: "Disponible para dos personas máximo" },
+                { included: false, text: "No es posible compartirlo con más de dos personas" }
+              ],
+            }
+          ];
     
-    <!-- Toggle Mensual / Trimestral -->
-    <div class="billing-toggle" data-aos="fade-up" data-aos-delay="400">
-      <span>Mensual</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="toggleBilling" />
-        <span class="slider"></span>
-      </label>
-      <span>Trimestral (-12%)</span>
-    </div>
-
-    <!-- Contenedor de Planes -->
-    <div class="pricing-container" id="plansContainer" data-aos="fade-up" data-aos-delay="500"></div>
-
-  </section>
-  <!-- Información Importante -->
-  <section class="important-info" data-aos="fade-up" data-aos-delay="600">
-    <div class="info-box">
-      <div class="icon">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="12" cy="12" r="10"></circle>
-          <path d="M12 6v6l4 2"></path>
-        </svg>
-      </div>
-      <div class="info-text">
-        <strong>IMPORTANTE:</strong> Los precios mostrados están en dinero IC del servidor GTAHUB.GG RP ORION</em>. 
-        Asegúrate de tener fondos suficientes dentro del juego para realizar la compra.
-      </div>
-    </div>
-  </section>
-
-<!-- Términos y Condiciones -->
-<section class="terms-section" data-aos="fade-up" data-aos-delay="700">
-  <div class="terms-box">
-    <h3><i class="fas fa-balance-scale"></i> Términos y Condiciones (Ultimo cambio 04/07/2025)</h3>
-
-    <div class="term-category">
-      <h4><i class="fas fa-money-check-alt"></i> Pagos y Devoluciones:</h4>
-      <ul>
-        <li><i class="fas fa-times-circle term-no"></i> No se aceptan devoluciones bajo ningún concepto.</li>
-        <li><i class="fas fa-info-circle term-info"></i> Solo se devolverá el monto proporcional no usado si nuestras herramientas dejan de estar disponibles públicamente.</li>
-        <li><i class="fas fa-coins"></i> Todos los precios mostrados están en dinero IC del servidor GTAHUB.GG ORION.</li>
-      </ul>
-    </div>
-
-    <div class="term-category">
-      <h4><i class="fas fa-user-shield"></i> Uso del Servicio:</h4>
-      <ul>
-        <li><i class="fas fa-users"></i> Los planes compartidos (como DUO o SQUAD) son para uso exclusivo por el grupo definido. Compartirlos fuera de ese límite es motivo de suspensión inmediata.</li>
-        <li><i class="fas fa-lock"></i> El acceso publico para cualquier usuarios registrados dentro del servidor GTAHUB.GG ORION y que pague la cantidad establecida.</li>
-        <li><i class="fas fa-link"></i> Este servicio no es transferible ni aplicable en otros servidores o plataformas.</li>
-      </ul>
-    </div>
-
-    <div class="term-category">
-      <h4><i class="fas fa-sync-alt"></i> Renovación y Modificaciones:</h4>
-      <ul>
-        <li><i class="fas fa-history"></i> Las suscripciones NO se renuevan automáticamente, deberás abrir un ticket en nuestro Discord.</li>
-        <li><i class="fas fa-edit"></i> Nos reservamos el derecho de modificar precios, características o disponibilidad sin previo aviso.</li>
-        <li><i class="fas fa-exclamation-triangle"></i> Cualquier intento de fraude, abuso o violación de estos términos resultará en la cancelación inmediata del plan sin compensaciones.</li>
-      </ul>
-    </div>
-
-    <div class="term-category">
-      <h4><i class="fas fa-question-circle"></i> Soporte y Contacto:</h4>
-      <ul>
-      <p><i class="fas fa-headset"></i> El soporte técnico y consultas se brindan únicamente vía Discord.</p>
-      <p><i class="fas fa-headset"></i> El servicio de Fast Radio, NO es oficial de GTAHUB.GG, es una herramienta independiente.</p>
-      <p><i class="fas fa-server"></i> Este servicio está gestionado por FAST RADIO - GTAHUB.GG y está ligado únicamente al servidor GTAHUB.GG ORION.</p>
-      </ul>
-    </div>
-
-    <div class="term-disclaimer">
-      <p><strong>Nota:</strong> Al adquirir cualquiera de nuestros planes, aceptas automáticamente estos términos y condiciones.</p>
-    </div>
-  </div>
-</section>
-
-  <!-- Footer fijo -->
-  <footer>
-    <p>© 2025 FAST RADIO GTAHUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
-  </footer>
-
-  <!-- AOS Init Script -->
-  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
-
-   <!-- Script Interno -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      const plansData = [
-        {
-          name: "PLAN SOLO",
-          priceMonthly: 50000,
-          allowAnnual: true,
-          highlighted: false,
-          features: [
-            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
-            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Solo disponible para una persona" },
-            { included: true, text: "Acceso a la herramienta de tu LEO" },
-            { included: false, text: "No es posible compartirlo con más personas" }
-          ],
-          link: "https://discord.gg/TxBnB4kPy2 "
-        },
-        {
-          name: "PLAN DUO",
-          priceMonthly: 95000,
-          allowAnnual: true,
-          highlighted: true,
-          features: [
-            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
-            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Disponible para dos personas máximo" },
-            { included: true, text: "Acceso a la herramienta de tu LEO" },
-            { included: false, text: "No es posible compartirlo con más de dos personas" }
-          ],
-          link: "https://discord.gg/TxBnB4kPy2 "
-        },
-        {
-          name: "PLAN SQUAD",
-          priceMonthly: 250000,
-          allowAnnual: true,
-          features: [
-            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
-            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Disponible para cinco personas máximo" },
-            { included: true, text: "Acceso a la herramienta de tu LEO" },
-            { included: false, text: "No es posible compartirlo con más de cinco personas" }
-          ],
-          link: "https://discord.gg/TxBnB4kPy2 "
-        },
-        {
-          name: "LIFETIME",
-          priceMonthly: 660000,
-          allowAnnual: false,
-          features: [
-            { included: true, text: "¿LIFETIME? Sí, así es, de por vida, para siempre, no pagarás más", tooltip: "Plan permanente, para siempre." },
-            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
-            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras para siempre." },
-            { included: true, text: "Acceso permanente a todas nuestras herramientas" },
-            { included: true, text: "Disponible para dos personas máximo" },
-            { included: false, text: "No es posible compartirlo con más de dos personas" }
-          ],
-        }
-      ];
-
-      function formatPrice(price, isQuarterly = false) {
-        if (!isQuarterly || !this.allowAnnual) return `$${Math.round(price).toString()} $`;
-        // Precio trimestral con 12% de descuento
-        return `$${Math.round(price * 3 * 0.88).toString()} $`;
-      }
-
-      function calculateSavings(price, isQuarterly = false) {
-        if (!isQuarterly || !this.allowAnnual) return null;
-        const original = price * 3;
-        const discounted = price * 3 * 0.88;
-        const savings = original - discounted;
-        return `$${Math.round(savings).toString()} $`;
-      }
-
-      function createPlanElement(plan, isQuarterly = false) {
-        const div = document.createElement("div");
-        div.className = `pricing-plan ${plan.highlighted ? "highlighted" : ""}`;
-        div.setAttribute('data-aos', 'fade-up');
-        div.setAttribute('data-aos-delay', Math.random() * 300);
-        const savings = calculateSavings.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual);
-
-        div.innerHTML = `
-          ${plan.highlighted ? '<div class="highlight-badge">MÁS PEDIDO</div>' : ''}
-          <div class="plan-name">${plan.name}</div>
-          <div class="plan-price">${formatPrice.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual)}</div>
-          <div class="plan-period">
-            ${plan.allowAnnual 
-              ? (isQuarterly ? "/trimestral (ahorra 12%)" : "/mes") 
-              : "/único pago"}
-          </div>
-          ${savings ? `<div class="plan-savings">Ahorras ${savings} cada 3 meses</div>` : ''}
-          <ul class="features-list">
-            ${plan.features.map(feat => `
-              <li class="feature-item ${feat.included ? '' : 'not-included'} ${!feat.text.trim() ? 'feature-empty' : ''}"
-                  ${feat.tooltip ? `title="${feat.tooltip}"` : ''}>
-                <i class="fa-solid ${feat.included ? 'fa-check' : 'fa-xmark'}"></i>
-                ${feat.text}
-              </li>`).join('')}
-          </ul>
-          <a href="${plan.link}" class="plan-button" target="_blank" rel="noopener noreferrer" aria-label="Adquirir plan ${plan.name} por ${formatPrice.call(plan, plan.priceMonthly, isQuarterly)}">
-            Adquirir
-          </a>
-        `;
-        return div;
-      }
-
-      function renderPlans(isQuarterly = false) {
-        const container = document.getElementById("plansContainer");
-        container.innerHTML = "";
-        plansData.forEach(plan => {
-          container.appendChild(createPlanElement(plan, isQuarterly && plan.allowAnnual));
+          function formatPrice(price, isQuarterly = false) {
+            if (!isQuarterly || !this.allowAnnual) return `$${Math.round(price).toString()} $`;
+            // Precio trimestral con 12% de descuento
+            return `$${Math.round(price * 3 * 0.88).toString()} $`;
+          }
+    
+          function calculateSavings(price, isQuarterly = false) {
+            if (!isQuarterly || !this.allowAnnual) return null;
+            const original = price * 3;
+            const discounted = price * 3 * 0.88;
+            const savings = original - discounted;
+            return `$${Math.round(savings).toString()} $`;
+          }
+    
+          function createPlanElement(plan, isQuarterly = false) {
+            const div = document.createElement("div");
+            div.className = `pricing-plan ${plan.highlighted ? "highlighted" : ""}`;
+            div.setAttribute('data-aos', 'fade-up');
+            div.setAttribute('data-aos-delay', Math.random() * 300);
+            const savings = calculateSavings.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual);
+    
+            div.innerHTML = `
+              ${plan.highlighted ? '<div class="highlight-badge">MÁS PEDIDO</div>' : ''}
+              <div class="plan-name">${plan.name}</div>
+              <div class="plan-price">${formatPrice.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual)}</div>
+              <div class="plan-period">
+                ${plan.allowAnnual 
+                  ? (isQuarterly ? "/trimestral (ahorra 12%)" : "/mes") 
+                  : "/único pago"}
+              </div>
+              ${savings ? `<div class="plan-savings">Ahorras ${savings} cada 3 meses</div>` : ''}
+              <ul class="features-list">
+                ${plan.features.map(feat => `
+                  <li class="feature-item ${feat.included ? '' : 'not-included'} ${!feat.text.trim() ? 'feature-empty' : ''}"
+                      ${feat.tooltip ? `title="${feat.tooltip}"` : ''}>
+                    <i class="fa-solid ${feat.included ? 'fa-check' : 'fa-xmark'}"></i>
+                    ${feat.text}
+                  </li>`).join('')}
+              </ul>
+              <a href="${plan.link}" class="plan-button" target="_blank" rel="noopener noreferrer" aria-label="Adquirir plan ${plan.name} por ${formatPrice.call(plan, plan.priceMonthly, isQuarterly)}">
+                Adquirir
+              </a>
+            `;
+            return div;
+          }
+    
+          function renderPlans(isQuarterly = false) {
+            const container = document.getElementById("plansContainer");
+            container.innerHTML = "";
+            plansData.forEach(plan => {
+              container.appendChild(createPlanElement(plan, isQuarterly && plan.allowAnnual));
+            });
+          }
+    
+          // Manejar click en botón
+          document.getElementById("showPlansBtn").addEventListener("click", function () {
+            const plansSection = document.getElementById("plansSection");
+            plansSection.style.display = "block";
+            setTimeout(() => {
+              plansSection.classList.add("aos-animate");
+            }, 100);
+            renderPlans(); // Renderizar solo cuando se hace click
+            AOS.refresh();
+          });
+    
+          // Toggle evento - Ahora es Trimestral
+          document.getElementById("toggleBilling").addEventListener("change", function () {
+            renderPlans(this.checked);
+          });
+    
+          // Inicializar animaciones
+          AOS.init({
+            duration: 600,
+            once: true,
+            offset: 100
+          });
         });
-      }
-
-      // Manejar click en botón
-      document.getElementById("showPlansBtn").addEventListener("click", function () {
-        const plansSection = document.getElementById("plansSection");
-        plansSection.style.display = "block";
-        setTimeout(() => {
-          plansSection.classList.add("aos-animate");
-        }, 100);
-        renderPlans(); // Renderizar solo cuando se hace click
-        AOS.refresh();
-      });
-
-      // Toggle evento - Ahora es Trimestral
-      document.getElementById("toggleBilling").addEventListener("change", function () {
-        renderPlans(this.checked);
-      });
-
-      // Inicializar animaciones
-      AOS.init({
-        duration: 600,
-        once: true,
-        offset: 100
-      });
-    });
-  </script>
+    </script>
 
 </body>
+
 </html>
