@@ -22,7 +22,12 @@ body {
   color: var(--text);
   line-height: 1.6;
 }
-
+.plan-savings {
+  font-size: 0.85rem;
+  color: #2196F3;
+  margin-top: 0.5rem;
+  display: block;
+}
 /* Hero */
 .hero {
   background: linear-gradient(135deg, #0f0f0f, #1c1c1c);

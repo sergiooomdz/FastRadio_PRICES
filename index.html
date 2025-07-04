@@ -48,13 +48,13 @@
 
   <!-- Footer fijo -->
   <footer>
-    <p>© 2025 FAST RADIO GTA HUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
+    <p>© 2025 FAST RADIO GTAHUB.GG | Creado por <strong>Sergioo</strong> | Discord: sergioomdz</p>
   </footer>
 
   <!-- AOS Init Script -->
   <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
 
-  <!-- Script Interno -->
+   <!-- Script Interno -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const plansData = [
@@ -104,7 +104,7 @@
           priceMonthly: 660000,
           allowAnnual: false,
           features: [
-            { included: true, text: "¿LIFETIME? Sí, asi es, de por vida, para siempre, no pagaras más", tooltip: "Plan permanente, para siempre." },
+            { included: true, text: "¿LIFETIME? Sí, así es, de por vida, para siempre, no pagarás más", tooltip: "Plan permanente, para siempre." },
             { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras para siempre." },
             { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
             { included: true, text: "Acceso permanente a todas nuestras herramientas" },
@@ -115,9 +115,17 @@
       ];
 
       function formatPrice(price, isQuarterly = false) {
-        if (!isQuarterly || !this.allowAnnual) return `$${price.toLocaleString()} $`;
+        if (!isQuarterly || !this.allowAnnual) return `$${Math.round(price).toString()} $`;
         // Precio trimestral con 12% de descuento
-        return `$${(price * 3 * 0.88).toLocaleString()} $`;
+        return `$${Math.round(price * 3 * 0.88).toString()} $`;
+      }
+
+      function calculateSavings(price, isQuarterly = false) {
+        if (!isQuarterly || !this.allowAnnual) return null;
+        const original = price * 3;
+        const discounted = price * 3 * 0.88;
+        const savings = original - discounted;
+        return `$${Math.round(savings).toString()} $`;
       }
 
       function createPlanElement(plan, isQuarterly = false) {
@@ -125,6 +133,8 @@
         div.className = `pricing-plan ${plan.highlighted ? "highlighted" : ""}`;
         div.setAttribute('data-aos', 'fade-up');
         div.setAttribute('data-aos-delay', Math.random() * 300);
+        const savings = calculateSavings.call(plan, plan.priceMonthly, isQuarterly && plan.allowAnnual);
+
         div.innerHTML = `
           ${plan.highlighted ? '<div class="highlight-badge">MÁS PEDIDO</div>' : ''}
           <div class="plan-name">${plan.name}</div>
@@ -134,6 +144,7 @@
               ? (isQuarterly ? "/trimestral (ahorra 12%)" : "/mes") 
               : "/único pago"}
           </div>
+          ${savings ? `<div class="plan-savings">Ahorras ${savings} cada 3 meses</div>` : ''}
           <ul class="features-list">
             ${plan.features.map(feat => `
               <li class="feature-item ${feat.included ? '' : 'not-included'} ${!feat.text.trim() ? 'feature-empty' : ''}"
