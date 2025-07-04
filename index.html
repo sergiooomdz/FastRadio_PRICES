@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Planes de Suscripción</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href=" https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css ">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos @2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Estilos Externos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Elije Tu Plan Ideal</h1>
+    <p>Descubre nuestras opciones de suscripción diseñadas para adaptarse a tus necesidades.</p>
+  </header>
+
+  <section class="pricing-section" aria-label="Planes de suscripción">
+    
+    <!-- Toggle Mensual / Anual -->
+    <div class="billing-toggle">
+      <span>Mensual</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="toggleBilling" />
+        <span class="slider"></span>
+      </label>
+      <span>Anual (-20%)</span>
+    </div>
+
+    <!-- Contenedor de Planes -->
+    <div class="pricing-container" id="plansContainer"></div>
+
+  </section>
+
+  <footer>
+    &copy; 2025 Tu Marca. Todos los derechos reservados.
+  </footer>
+
+  <!-- AOS Init Script -->
+  <script src="https://unpkg.com/aos @2.3.4/dist/aos.js"></script>
+
+  <!-- Script Interno -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const plansData = [
+        {
+          name: "PLAN SOLO",
+          priceMonthly: 50000,
+          allowAnnual: true,
+          highlighted: false,
+          features: [
+            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+            { included: true, text: "Solo disponible para una persona" },
+            { included: true, text: "Acceso a la herramienta de tu LEO" },
+            { included: false, text: "No es posible compartirlo con más personas" }
+          ],
+          link: "https://discord.gg/TxBnB4kPy2 "
+        },
+        {
+          name: "PLAN DUO",
+          priceMonthly: 95000,
+          allowAnnual: true,
+          highlighted: true,
+          features: [
+            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+            { included: true, text: "Disponible para dos personas" },
+            { included: true, text: "Acceso a la herramienta de tu LEO" },
+            { included: true, text: "10% de descuento al adquirir más de dos meses" },
+            { included: false, text: "No es posible compartirlo con más de dos personas" }
+          ],
+          link: "https://discord.gg/TxBnB4kPy2 "
+        },
+        {
+          name: "PLAN SQUAD",
+          priceMonthly: 250000,
+          allowAnnual: false,
+          features: [
+            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+            { included: true, text: "Disponible para cinco personas" },
+            { included: false, text: "No es posible compartirlo con más de cinco personas" }
+          ],
+          link: "https://discord.gg/TxBnB4kPy2 "
+        },
+        {
+          name: "DE POR VIDA",
+          priceMonthly: 650000,
+          allowAnnual: false,
+          features: [
+            { included: true, text: "Acceso total a la herramienta", tooltip: "Tienes acceso completo a todas las funciones actuales y futuras." },
+            { included: true, text: "Soporte comunitario en Discord", tooltip: "Ayuda directa en nuestro servidor de Discord." },
+            { included: true, text: "Acceso permanente a todas nuestras herramientas" },
+            { included: true, text: "Disponible para dos personas" },
+            { included: false, text: "No es posible compartirlo con más de dos personas" }
+          ]
+        }
+      ];
+
+      function formatPrice(price, annual = false) {
+        if (!annual || !this.allowAnnual) return `$${price.toLocaleString()} COP`;
+        return `$${(price * 10).toLocaleString()} COP`;
+      }
+
+      function createPlanElement(plan, annual = false) {
+        const div = document.createElement("div");
+        div.className = `pricing-plan ${plan.highlighted ? "highlighted" : ""}`;
+        div.setAttribute('data-aos', 'fade-up');
+        div.innerHTML = `
+          ${plan.highlighted ? '<div class="highlight-badge">Más popular</div>' : ''}
+          <div class="plan-name">${plan.name}</div>
+          <div class="plan-price">${formatPrice.call(plan, plan.priceMonthly, annual && plan.allowAnnual)}</div>
+          <div class="plan-period">${plan.allowAnnual ? (annual ? "/año (ahorra 20%)" : "/mes") : "/único pago"}</div>
+          <ul class="features-list">
+            ${plan.features.map(feat => `
+              <li class="feature-item ${feat.included ? '' : 'not-included'} ${!feat.text.trim() ? 'feature-empty' : ''}"
+                  ${feat.tooltip ? `title="${feat.tooltip}"` : ''}>
+                <i class="fa-solid ${feat.included ? 'fa-check' : 'fa-xmark'}"></i>
+                ${feat.text}
+              </li>`).join('')}
+          </ul>
+          <a href="${plan.link}" class="plan-button" target="_blank" rel="noopener noreferrer" aria-label="Adquirir plan ${plan.name} por ${formatPrice.call(plan, plan.priceMonthly, annual)}">
+            Adquirir
+          </a>
+        `;
+        return div;
+      }
+
+      function renderPlans(annual = false) {
+        const container = document.getElementById("plansContainer");
+        container.innerHTML = "";
+        plansData.forEach(plan => {
+          container.appendChild(createPlanElement(plan, annual && plan.allowAnnual));
+        });
+      }
+
+      // Render inicial
+      renderPlans();
+
+      // Toggle evento
+      document.getElementById("toggleBilling").addEventListener("change", function () {
+        renderPlans(this.checked);
+      });
+
+      // Inicializar animaciones
+      AOS.init({
+        duration: 600,
+        once: true
+      });
+    });
+  </script>
+
+</body>
+</html>
